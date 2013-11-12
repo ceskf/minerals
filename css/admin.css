@@ -1,0 +1,40 @@
+.ui-widget{
+	font-size: 12px;
+}
+#tabs{
+	width: 1000px;
+	position: absolute;
+	left: 50%;
+	margin-left: -500px;
+}
+#header{
+	width: 960px;
+	position: relative;
+	left: 50%;
+	margin-left: -485px;
+	border: 1px solid white;
+}
+body{
+	background-color: #666666;
+	font-family: Verdana,Geneva,sans-serif;
+}
+#loader_ore,
+#loader_ice{
+	margin-bottom: -6px;
+	display: none;
+}
+.btn{
+	padding: 2px 10px 2px 10px;
+	cursor: pointer;
+	background-color: #2C2C32!important;
+    border: 1px solid #141417;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #ffffff!important;
+}
+.btn:hover{
+	border: 1px solid #808080;
+}

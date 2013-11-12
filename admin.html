@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="libs/jquery-ui/css/custom-theme/jquery-ui-1.10.3.custom.css">
+    	<link rel="stylesheet" type="text/css" media="screen" href="libs/jquery.jqGrid/css/ui.jqgrid.css" />
+    	<link rel="stylesheet" type="text/css" href="css/admin.css">
+        <title>Administration</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="libs/jquery-ui/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="libs/jquery-ui/js/jquery-ui-1.10.3.custom.js"></script>
+        <script type="text/javascript" src="libs/jquery.jqGrid/js/jquery.jqGrid.src.js"></script>
+        <script type="text/javascript" src="libs/jquery.jqGrid/js/i18n/grid.locale-ru.js"></script>
+        <script type="text/javascript" src="js/admin.js"></script>
+    </head>
+    <body>
+        <div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">Ore</a></li>
+				<li><a href="#tabs-2">Ice</a></li>
+			</ul>
+			<div id="tabs-1">
+				<p>
+					<a class="btn" id="ore_ec" href="php/ajax/ore_prices.php?from=admin">EC</a>
+    				<img src="img/loading.gif" width="20px" id="loader_ore">
+					<table style="width:960px; border-collapse:collapse" id="header">
+						<tr>
+							<td style="width:75px"></td>
+							<td style="width:185px"></td>
+							<td style="width:60px"></td>
+							<td style="width:60px"></td>
+							<td style="width:60px" align="center"><img src="data/fields/ore/Tritanium.png" title="Tritanium"></td>
+							<td style="width:60px" align="center"><img src="data/fields/ore/Pyerite.png" title="Pyerite"></td>
+							<td style="width:60px" align="center"><img src="data/fields/ore/Mexallon.png" title="Mexallon"></td>
+							<td style="width:60px" align="center"><img src="data/fields/ore/Isogen.png" title="Isogen"></td>
+							<td style="width:60px" align="center"><img src="data/fields/ore/Nocxium.png" title="Nocxium"></td>
+							<td style="width:60px" align="center"><img src="data/fields/ore/Zydrine.png" title="Zydrine"></td>
+							<td style="width:60px" align="center"><img src="data/fields/ore/Megacyte.png" title="Megacyte"></td>
+							<td style="width:60px" align="center"><img src="data/fields/ore/Morphite.png" title="Morphite"></td>
+						</tr>
+					</table>
+					<table id="ore"></table>
+					<div id="pager_ore"></div>
+				</p>
+			</div>
+			<div id="tabs-2">
+				<p>
+					<a class="btn" id="ice_ec" href="php/ajax/ice_prices.php?from=admin">EC</a>
+    				<img src="img/loading.gif" width="20px" id="loader_ice">
+					<table style="width:960px" id="header">
+						<tr>
+							<td style="width:120px"></td>
+							<td style="width:200px"></td>
+							<td style="width:75px"></td>
+							<td style="width:75px"></td>
+							<td style="width:85px" align="center"><img src="data/fields/ice/Heavy Water.png" title="Heavy Water"></td>
+							<td style="width:85px" align="center"><img src="data/fields/ice/Liquid Ozone.png" title="Liquid Ozone"></td>
+							<td style="width:85px" align="center"><img src="data/fields/ice/Helium Isotopes.png" title="Helium Isotopes"></td>
+							<td style="width:85px" align="center"><img src="data/fields/ice/Strontium Clathrates.png" title="Strontium Clathrates"></td>
+							<td style="width:85px" align="center"><img src="data/fields/ice/Hydrogen Isotopes.png" title="Hydrogen Isotopes"></td>
+							<td style="width:85px" align="center"><img src="data/fields/ice/Oxygen Isotopes.png" title="Oxygen Isotopes"></td>
+							<td style="width:85px" align="center"><img src="data/fields/ice/Nitrogen Isotopes.png" title="Nitrogen Isotopes"></td>
+						</tr>
+					</table>
+					<table id="ice"></table>
+					<div id="pager_ice"></div>
+				</p>
+			</div>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" type="text/css" href="css/table.css">
+        <title>Administration</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="libs/angular.min.js"></script>
+        <script type="text/javascript" src="libs/jquery-ui/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/table.js"></script>
+    </head>
+    <body ng-app="minerals">
+    	<img src="img/img.jpg" id="shapka">
+    	<div id="container">
+    		<p align="center">
+    			<a class="btn" id="ore">Руда</a>
+    			<a class="btn" id="ice">Лед</a>
+    		</p>
+    		<div ng-controller="ore" id="ore_tab">
+    			<table class="table" border="1">
+    				<tr class="zag">
+    					<td colspan="3">Цены</td>
+                        <td><input class="prices" type="text" ng-model="fields.tritanium"></td>
+                        <td><input class="prices" type="text" ng-model="fields.pyerite"></td>
+                        <td><input class="prices" type="text" ng-model="fields.mexallon"></td>
+                        <td><input class="prices" type="text" ng-model="fields.isogen"></td>
+                        <td><input class="prices" type="text" ng-model="fields.nocxium"></td>
+                        <td><input class="prices" type="text" ng-model="fields.zydrine"></td>
+    					<td><input class="prices" type="text" ng-model="fields.megacyte"></td>
+    					<td><input class="prices" type="text" ng-model="fields.morphite"></td>
+    					<td colspan="7" align="left">
+                            <span style="float:left">Обновлены цены : {{update_dt}}</span>
+    						<input type="checkbox" id="ore_boxes" ng-click="update_boxes()"> Сжатая руда
+                            
+    						<!--<a class="btn" id="ore_ec" ng-click="parse_ec_prices()">EC</a>
+    						<img src="img/loading.gif" width="20px" id="loader_ore">-->
+    					</td>
+    				</tr>
+    				<tr class="zag">
+    					<td>Название</td>
+                        <td>Вес</td>
+    					<td>Пачка</td>
+                        <td><img src="data/fields/ore/Tritanium.png" title="Tritanium"></td>
+                        <td><img src="data/fields/ore/Pyerite.png" title="Pyerite"></td>
+                        <td><img src="data/fields/ore/Mexallon.png" title="Mexallon"></td>
+                        <td><img src="data/fields/ore/Isogen.png" title="Isogen"></td>
+                        <td><img src="data/fields/ore/Nocxium.png" title="Nocxium"></td>
+                        <td><img src="data/fields/ore/Zydrine.png" title="Zydrine"></td>
+    					<td><img src="data/fields/ore/Megacyte.png" title="Megacyte"></td>
+    					<td><img src="data/fields/ore/Morphite.png" title="Morphite"></td>
+                        <td>единиц в джете</td>
+                        <td>цена пачки</td>
+                        <td>пачек в джете</td>
+                        <td>цена джета</td>
+                        <td>цена руды шт.</td>
+    					<td>Количество</td>
+    					<!--<td>ISK/m3</td>-->
+    					<td width="100px">Сумма</td>
+    				</tr>
+    				<tr ng-repeat="item in items | filter:boxing(criteria)">
+    					<td align="center"><img src={{item.img}} title={{item.name}}></td>
+                        <td align="right">{{item.weight}}</td>
+    					<td align="right">{{item.batch}}</td>
+                        <td align="right">{{item.tritanium}}</td>
+                        <td align="right">{{item.pyerite}}</td>
+                        <td align="right">{{item.mexallon}}</td>
+                        <td align="right">{{item.isogen}}</td>
+                        <td align="right">{{item.nocxium}}</td>
+                        <td align="right">{{item.zydrine}}</td>
+    					<td align="right">{{item.megacyte}}</td>
+    					<td align="right">{{item.morphite}}</td>
+                        <td align="right">{{item.ed_in_jet|format2}}</td>
+                        <td align="right">{{item.pak_price|format}}</td>
+                        <td align="right">{{item.pak_in_jet|format}}</td>
+                        <td align="right">{{item.jet_price|format}}</td>
+                        <td align="right">{{item.ruda_price|format2}}</td>
+    					<td align="right"><input class="prices" type="text" ng-model="item.quantity" id="ore_count" ng-click="change_q(item)"></td>
+    					<!--<td>{{item.isk}}</td>-->
+    					<td align="right">{{item.price|format2}}</td>
+    				</tr>
+    				<tr class="zag">
+    					<td colspan="11"></td>
+    					<td colspan="2">Общая сумма</td>
+    					<td align="right" colspan="5">
+    						{{sell_summ}}
+    					</td>
+    				</tr>
+    			</table>
+    		</div>
+    		<div ng-controller="ice" id="ice_tab">
+    			<table class="table" border="1">
+    				<tr class="zag">
+    					<td colspan="3">Prices</td>
+    					<td><input class="prices" type="text" ng-model="fields.heavy_water"></td>
+    					<td><input class="prices" type="text" ng-model="fields.liquid_ozone"></td>
+    					<td><input class="prices" type="text" ng-model="fields.helium_isotopes"></td>
+    					<td><input class="prices" type="text" ng-model="fields.strontium_clathrates"></td>
+    					<td><input class="prices" type="text" ng-model="fields.hydrogen_isotopes"></td>
+    					<td><input class="prices" type="text" ng-model="fields.oxygen_isotopes"></td>
+    					<td><input class="prices" type="text" ng-model="fields.nitrogen_isotopes"></td>
+    					<td colspan="8" align="left">
+                            <span style="float:left">Обновлены цены : {{update_dt}}</span><span>          </span>
+    						<input type="checkbox" id="ice_boxes" ng-click="update_boxes()"> Сжатый лед
+    						<!--<a class="btn" id="ice_ec" ng-click="parse_ec_prices()">EC</a>
+    						<img src="img/loading.gif" width="20px" id="loader_ice">-->
+    					</td>
+    				</tr>
+    				<tr class="zag">
+    					<td>Название</td>
+                        <td>Вес</td>
+    					<td>Пачка</td>
+    					<td><img src="data/fields/ice/Heavy Water.png" title="Heavy Water"></td>
+    					<td><img src="data/fields/ice/Liquid Ozone.png" title="Liquid Ozone"></td>
+    					<td><img src="data/fields/ice/Helium Isotopes.png" title="Helium Isotopes"></td>
+    					<td><img src="data/fields/ice/Strontium Clathrates.png" title="Strontium Clathrates"></td>
+    					<td><img src="data/fields/ice/Hydrogen Isotopes.png" title="Hydrogen Isotopes"></td>
+    					<td><img src="data/fields/ice/Oxygen Isotopes.png" title="Oxygen Isotopes"></td>
+    					<td><img src="data/fields/ice/Nitrogen Isotopes.png" title="Nitrogen Isotopes"></td>
+                        <td>единиц в джете</td>
+                        <td>цена пачки</td>
+                        <td>пачек в джете</td>
+                        <td>цена джета</td>
+                        <td>цена льда шт.</td>
+    					<td>Количество</td>
+    					<!--<td>ISK/m3</td>-->
+    					<td width="100px">Сумма</td>
+    				</tr>
+    				<tr ng-repeat="item in items | filter:boxing(criteria)">
+    					<td align="center"><img src={{item.img}} title={{item.name}}></td>
+                        <td align="right">{{item.weight}}</td>
+    					<td align="right">{{item.batch}}</td>
+    					<td align="right">{{item.heavy_water}}</td>
+    					<td align="right">{{item.liquid_ozone}}</td>
+    					<td align="right">{{item.helium_isotopes}}</td>
+    					<td align="right">{{item.strontium_clathrates}}</td>
+    					<td align="right">{{item.hydrogen_isotopes}}</td>
+    					<td align="right">{{item.oxygen_isotopes}}</td>
+    					<td align="right">{{item.nitrogen_isotopes}}</td>
+                        <td align="right">{{item.ed_in_jet|format2}}</td>
+                        <td align="right">{{item.pak_price|format}}</td>
+                        <td align="right">{{item.pak_in_jet|format}}</td>
+                        <td align="right">{{item.jet_price|format}}</td>
+                        <td align="right">{{item.ruda_price|format2}}</td>
+    					<td align="right"><input class="prices" type="text" ng-model="item.quantity" ng-click="change_q(item)"></td>
+    					<!--<td>{{item.isk}}</td>-->
+    					<td align="right">{{item.price|format2}}</td>
+    				</tr>
+    				<tr class="zag">
+    					<td colspan="10"></td>
+    					<td colspan="2">Общая сумма</td>
+    					<td align="right" colspan="5">
+    						{{sell_summ}}
+    					</td>
+    				</tr>
+    			</table>
+    		</div>
+    	</div>
+    </body>
+</html>
